@@ -52,3 +52,77 @@ Pre-trained LM (GPT-2 / LLaMA)
 └─────────────────────┘
 ```
 
+---
+
+## Quickstart
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run notebooks in order
+jupyter notebook 01_supervised_finetuning.ipynb
+jupyter notebook 02_reward_model.ipynb
+jupyter notebook 03_ppo_finetuning.ipynb
+jupyter notebook 04_evaluation.ipynb
+
+# 3. Launch interactive Gradio UI
+python rlhf_app.py
+# → http://localhost:7860
+```
+
+---
+
+## Datasets
+
+| Stage | Dataset | Size |
+|-------|---------|------|
+| SFT | Anthropic HH-RLHF (helpful) | ~20K pairs |
+| RM | Anthropic HH-RLHF (pairwise) | ~170K pairs |
+| RL | Anthropic HH-RLHF (prompts) | ~50K prompts |
+| Eval | WikiText-103 | test split |
+| Baseline | OpenAI WebGPT Comparisons | secondary |
+
+---
+
+## Key Metrics
+
+| Metric | Description | Target |
+|--------|-------------|--------|
+| RM Accuracy | Preference prediction accuracy (held-out) | 69–72% |
+| Win Rate (RLHF vs SFT) | RM-scored response win rate | > 55% |
+| Win Rate (RLHF vs BoN) | vs. Best-of-N sampling baseline | > 50% |
+| KL Divergence | Per-step policy drift from SFT | < 10 nats |
+| WikiText-103 PPL | Language modeling retention | ≈ SFT ± 5 |
+
+---
+
+## Novel Ablation
+
+**Research Question:** Does an undersized RM (2× fewer params than policy) degrade alignment?
+
+This experiment is **not explicitly reported** in:
+- Ouyang et al. (InstructGPT, NeurIPS 2022)  
+- Bai et al. (Anthropic, 2022)
+
+We test the under-examined assumption that RM capacity must match policy capacity.
+
+Run the ablation in `02_reward_model.ipynb` (set `RUN_ABLATION = True`).
+
+---
+
+## References
+
+1. Christiano et al. (2017). *Deep Reinforcement Learning from Human Preferences*. NeurIPS.
+2. Ouyang et al. (2022). *Training language models to follow instructions with human feedback*. NeurIPS.
+3. Bai et al. (2022). *Training a Helpful and Harmless Assistant with RLHF*. Anthropic.
+4. Stiennon et al. (2020). *Learning to summarize with human feedback*. NeurIPS.
+
+---
+
+## Member Contributions
+
+| Member | Responsibilities |
+|--------|-----------------|
+| Kumi Acheampong | SFT implementation, PPO fine-tuning, evaluation pipeline |
+| Selase Doku | Reward model training, dataset preprocessing, literature review & writeup |

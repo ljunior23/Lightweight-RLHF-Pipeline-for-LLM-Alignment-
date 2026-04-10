@@ -1,0 +1,28 @@
+# Core ML
+torch
+transformers
+datasets
+trl
+accelerate
+peft
+bitsandbytes
+
+# Data / Eval
+numpy
+scipy
+scikit-learn
+matplotlib
+seaborn
+
+# Training utilities
+wandb
+einops
+sentencepiece
+
+# Notebooks
+jupyter
+ipywidgets
+tqdm
+
+# Gradio UI
+gradio
