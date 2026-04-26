@@ -3,7 +3,7 @@
 > A full replication of Anthropic's three-stage RLHF training pipeline at academic scale, plus a novel ablation study on reward model capacity.
 >
 > **Authors:** Kumi Acheampong · Selase Doku  
-> *CIS-585 — University of Michigan*
+> *CIS-585 — University of Michigan-Dearborn*
 
 ---
 
