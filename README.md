@@ -1,7 +1,9 @@
 # Lightweight RLHF Pipeline for Aligning LLMs
 
+**CIS-585: Advanced AI | University of Michigan-Dearborn**  
+**Authors:** Kumi Acheampong · Selase Doku
 
-Replicates the Anthropic RLHF three-stage pipeline at academic scale, 
+Replicates the InstructGPT / Anthropic RLHF three-stage pipeline at academic scale, 
 plus a novel ablation on reward model capacity.
 
 ---
