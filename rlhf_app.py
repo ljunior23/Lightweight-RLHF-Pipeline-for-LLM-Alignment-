@@ -541,7 +541,7 @@ with gr.Blocks(title="RLHF Pipeline | CIS-585") as demo:
                     with gr.Row():
                         with gr.Column():
                             rm_prompt  = gr.Textbox(label="Prompt", placeholder="Enter a prompt to generate response pairs...", lines=3)
-                            gen_btn    = gr.Button("⚡ Generate Response Pair", elem_classes="secondary-btn")
+                            gen_btn    = gr.Button("Generate Response Pair", elem_classes="secondary-btn")
                             gen_status = gr.Textbox(label="Status", interactive=False, lines=1)
 
                         with gr.Column():
@@ -625,7 +625,7 @@ This experiment is **not explicitly reported** in Ouyang et al. (InstructGPT, 20
 making it a **novel contribution** of this work. We test the under-examined assumption that RM capacity must match policy capacity.
             """)
 
-            abl_btn    = gr.Button("🔬 Run Ablation Study", elem_classes="primary-btn")
+            abl_btn    = gr.Button("Run Ablation Study", elem_classes="primary-btn")
             abl_output = gr.Textbox(label="Ablation Results", lines=24, interactive=False, elem_classes="log-box")
 
             abl_btn.click(run_ablation, [], abl_output)
@@ -673,7 +673,7 @@ This project replicates the InstructGPT/Anthropic RLHF pipeline at academic scal
 
 import inspect as _inspect
 _launch_params = _inspect.signature(demo.launch).parameters
-_launch_kwargs = dict(share=False, server_name="0.0.0.0", server_port=7860)
+_launch_kwargs = dict(share=False, server_name="localhost", server_port=7860)
 if "css" in _launch_params:
-    _launch_kwargs["css"] = CSS   # Gradio 6+
+    _launch_kwargs["css"] = CSS   
 demo.launch(**_launch_kwargs)
